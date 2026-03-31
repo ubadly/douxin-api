@@ -12,7 +12,7 @@
     "start": "fastify start -l info -c tsx app.ts",
     "dev": "fastify start -w -l info -P -c tsx app.ts",
     "build": "tsc --project tsconfig.json",
-    "prod": "node dist/app.js"  
+    "prod": "fastify start -l info dist/app.js"  
   },
   "keywords": [],
   "author": "",

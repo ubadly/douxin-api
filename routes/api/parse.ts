@@ -1,8 +1,24 @@
 "use strict";
 
-import * as douyinParse from "../../douyin/parse";
+import * as douyinParse from "../../douyin/parse.js";
 import { FastifyInstance } from "fastify";
-module.exports = async function (fastify: FastifyInstance, opts: any) {
+
+interface JsonResponse {
+  code: number;
+  msg: string;
+  data: any | null;
+}
+
+interface ParseResult {
+  title: string;
+  type: string;
+  cover?: string;
+  url?: string;
+  videos?: Array<{ url: string }>;
+  pics?: string[];
+}
+
+export default async function (fastify: FastifyInstance, opts: any) {
   fastify.post("/parse", async function (request, reply) {
     const jsonResponse: JsonResponse = {
       code: 0,

@@ -1,8 +1,27 @@
 import {
   encryptRequestParams,
   createSignedParamsHMAC,
-} from "./request-encrypt";
-import { kukudemethod } from "./request-decrypt";
+} from "./request-encrypt.js";
+import { kukudemethod } from "./request-decrypt.js";
+
+interface ParseResult {
+  title: string;
+  type: string;
+  cover?: string;
+  url?: string;
+  videos?: Array<{ url: string }>;
+  pics?: string[];
+}
+
+interface DouyinApiParseResponse {
+  desc?: string;
+  pics?: string[];
+  videoUrl?: string;
+  url?: string;
+  type?: "video" | "image";
+  cover?: string;
+}
+
 const URL = "https://dy.kukutool.com/api/parse";
 
 // 解析视频链接
