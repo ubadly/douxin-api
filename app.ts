@@ -1,6 +1,8 @@
 process.env.FASTIFY_AUTOLOAD_TYPESCRIPT = "1";
-import { FastifyInstance } from "fastify";
 
+"use strict";
+
+import { FastifyInstance } from "fastify";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import AutoLoad from "@fastify/autoload";
@@ -18,16 +20,12 @@ const options = {
         translateTime: 'HH:MM:ss Z',
         ignore: 'pid,hostname'
       }
-    }
+    },
+    file: path.join(__dirname, 'logs', 'app.log')
   }
 };
 
 export default async function (fastify: FastifyInstance, opts: any) {
-  fastify.register(AutoLoad, {
-    dir: path.join(__dirname, "plugins"),
-    options: Object.assign({}, opts),
-  });
-
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, "routes"),
     options: Object.assign({}, opts),

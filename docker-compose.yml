@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  douxin-api:
+    build: .
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    # 挂载日志目录，使日志持久化到宿主机
+    volumes:
+      - ./logs:/app/logs

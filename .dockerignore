@@ -1,0 +1,9 @@
+# 忽略不需要复制到容器的文件和目录
+node_modules/
+dist/
+logs/
+.env
+.git/
+.gitignore
+Dockerfile
+docker-compose.yml
